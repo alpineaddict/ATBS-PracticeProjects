@@ -1,3 +1,4 @@
-chore-assigner/*.json
+chore-assigner/credentials.json
+chore-assigner/token.json
 chore-assigner/emails.py
 email_tester.py
