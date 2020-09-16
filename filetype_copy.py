@@ -1,20 +1,22 @@
 #!/usr/bin/env python
 
-# Selective Copy
-# Write a program that walks through a folder tree and searches for files with a certain file extension
-# (such as .pdf or .jpg). Copy these files from whatever location they are in to a new folder.
+"""
+Script which walks through a folder tree and searches for files with a certain
+file extension (such as .pdf or .jpg). Copy these files from whatever location
+they are in to a new folder.
+"""
 
 import shutil, os
 from pathlib import Path
 
-def FileTypeCopy(sourcePath, targetPath, fileExtension):
+def fileTypeCopy(source_path, target_path, file_extension):
     '''
     Accept absolute file path, target path and file extension as parameter. 
     Perform a tree walk at the absolute path and copy files of specified type to target destination.
     '''
 
-    source = Path(sourcePath)
-    target = Path(targetPath)
+    source = Path(source_path)
+    target = Path(target_path)
     filesCopied = []
 
     if not target.exists():
@@ -36,7 +38,7 @@ def FileTypeCopy(sourcePath, targetPath, fileExtension):
             
             # List matching files and copy to target directory 
             for filename in filenames:
-                if filename.endswith(fileExtension):
+                if filename.endswith(file_extension):
                     print('File found: ' + filename)
                     if filename in os.listdir(target):
                         print('{} already exists in {}. Skipping copy.'.format(filename,target))
@@ -60,4 +62,9 @@ def FileTypeCopy(sourcePath, targetPath, fileExtension):
 
         break
 
-FileTypeCopy('/home/ross/AllThingsPython/ATBS', '/home/ross/Dump2/', 'pdf')
+if __name__ == '__main__'"
+    FILEPATH   = '/home/ross/AllThingsPython/ATBS'
+    TARGET_DIR = '/home/ross/Dump2/'
+    FILETYPE   = 'pdf'
+
+    fileTypeCopy(FILEPATH, TARGET_DIR, FILETYPE)

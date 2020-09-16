@@ -1,22 +1,27 @@
 #!/usr/bin/env python
 
-# LinkVerification
-# Request input from user to acquire a website URL
-# Retrieve all links from the page and check their validity
+"""
+Request input from user to acquire a website URL.
+Retrieve all links from the page and check their validity.
+"""
 
-import requests, bs4, pyinputplus as pyip
+import requests
+import bs4
+import pyinputplus as pyip
 from urllib.request import Request, urlopen
 
-def URL_Validity(url):
+def url_validity(url):
     '''
     Custom function used for URL input validation.
     '''
     if 'https://' not in url:
-        raise Exception('\nURL must contain \'https://\'. Please enter a valid URL.'
-                        '\nWebsite URL:')
+        raise Exception(
+                    'URL must contain \'https://\'. Please enter a valid URL.'
+                    '\nWebsite URL:'
+        )
 
 
-def Get_Website(url):
+def getWebsite(url):
     '''
     Take URL as parameter and check for validity. 
     If link is not valid, return error and prompt again.
@@ -34,10 +39,10 @@ def Get_Website(url):
         print('Unable to load website. Error:\n{}'.format(e))
 
 
-def Check_Links(url):
+def checkLinks(url):
     '''
-    Accept website as parameter. Crawl website for links, and then check validity of each link.
-    Return link validity for all links found on website. 
+    Accept website as parameter. Crawl website for links, and then check
+    validity of each link. Return link validity for all links found. 
     '''
     print('\nBelow is a list of links of page and their validity.\n')
     
@@ -59,21 +64,23 @@ def Check_Links(url):
             validity.raise_for_status()
             print('\nLink:\n', link, '\nStatus: Valid')
         except Exception as e:
-            print('\nLink:\n', link, '\nStatus: ERROR! 404 - Link is not a valid website.')
+            print('\nLink:\n', link, '\nStatus: ERROR! 404 - '
+                'Link is not a valid website.')
             print('Exception: {}'.format(e))
 
 
 # Running the program
-print('Welcome to LinkVerification. This app will crawl a website of your choice and check ',
-      'all links for validity. An error will be presented if a link is not valid.')
+print('Welcome to LinkVerification. This app will crawl a website of your' 
+        'choice and check all links for validity. An error will be presented'
+        'if a link is not valid.')
 print('\nPlease enter a website URL: ')
 
-basePage     = pyip.inputCustom(URL_Validity)
-pageValidity = Get_Website(basePage)
+basePage     = pyip.inputCustom(url_validity)
+page_validity = getWebsite(basePage)
 
-if pageValidity:
+if page_validity:
     # Find every link on website
-    Check_Links(basePage)
+    checkLinks(basePage)
 else: 
     print('Terminating program.')
 

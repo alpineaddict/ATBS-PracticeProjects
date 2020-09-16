@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 
+""" Debug a simple coinflip application """
+
 import random
 import logging
 logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')

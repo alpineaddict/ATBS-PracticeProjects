@@ -1,7 +1,9 @@
 #!/usr/bin/env python
 
-# Accept email address & string from the command line, then use selenium 
-# to log into email and send email with the string to the provided address
+"""
+Accept email address & string from the command line, then use selenium 
+to log into email and send email with the string to the provided address.
+"""
 
 from selenium import webdriver
 import time
