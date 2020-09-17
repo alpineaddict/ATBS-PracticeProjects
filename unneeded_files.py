@@ -1,13 +1,16 @@
 #!/usr/bin/env python
 
-# Undeeded Files
-# Small program that accepts a directory and a file size, then walks said directory
-# looking for files larger than the file size specified and deletes them. 
+"""
+Small program that accepts a directory and a file size, then walks said directory
+looking for files larger than the file size specified and deletes them. 
+"""
 
 import os
 from pathlib import Path
 
-def UnneededFiles(directory, filesize):
+FILEPATH = '/home/ross/Desktop/TestDirectory'
+
+def UnneededFiles(directory, file_size):
     '''
     Accept directory path and file size as parameters.
     Perform tree walk starting at specified directory looking for files larger
@@ -15,8 +18,8 @@ def UnneededFiles(directory, filesize):
     '''
 
     path = Path(directory)
-    convertToBytes = filesize * 1024 * 1024
-    filesDeleted = []
+    convert_to_bytes = file_size * 1024 * 1024
+    files_deleted = []
 
     while True: 
         # Check validity of directory specified
@@ -25,25 +28,24 @@ def UnneededFiles(directory, filesize):
             break
 
         # Perform tree walk
-        for foldername, subfolders, filenames in os.walk(path):
-            print(f'Scanning files in {foldername} ...')
+        for folder_name, sub_folders, filenames in os.walk(path):
+            print(f'Scanning files in {folder_name} ...')
             
             # List matching files and copy to target directory 
             for filename in filenames:
-                if os.path.getsize(os.path.join(foldername, filename)) > convertToBytes:
-                    print(f'File over {filesize} MB found: ' + filename)
-                    filesDeleted.append(filename)
-                    os.unlink(os.path.join(foldername, filename))
-            print()     # print blank line for readability
+                if os.path.getsize(os.path.join(folder_name, filename)) > convert_to_bytes:
+                    print(f'File over {file_size} MB found: ' + filename)
+                    files_deleted.append(filename)
+                    os.unlink(os.path.join(folder_name, filename))
 
         # Show files deleted:
         print("Scan finished. Here is a list of files deleted:")
-        for file in filesDeleted: 
+        for file in files_deleted: 
             print(file)
 
         break
 
-UnneededFiles('/home/ross/All Things Python/ATBS/', 99)
+UnneededFiles(FILEPATH, 99)
 
 # file size: 104000000 or 100M
 # 99 converted:  103809024

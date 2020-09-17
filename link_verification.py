@@ -10,7 +10,7 @@ import bs4
 import pyinputplus as pyip
 from urllib.request import Request, urlopen
 
-def url_validity(url):
+def urlValidity(url):
     '''
     Custom function used for URL input validation.
     '''
@@ -75,12 +75,11 @@ print('Welcome to LinkVerification. This app will crawl a website of your'
         'if a link is not valid.')
 print('\nPlease enter a website URL: ')
 
-basePage     = pyip.inputCustom(url_validity)
-page_validity = getWebsite(basePage)
+base_page     = pyip.inputCustom(urlValidity)
+page_validity = getWebsite(base_page)
 
 if page_validity:
     # Find every link on website
-    checkLinks(basePage)
+    checkLinks(base_page)
 else: 
     print('Terminating program.')
-

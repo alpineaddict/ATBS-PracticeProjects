@@ -1,25 +1,33 @@
-#! /usr/bin/env python
+#!/usr/bin/env python
 
-# lookingBusy.py - Move move slightly every 25 seconds to prevent computer from going idle/sleeping
+"""
+Move move slightly every 25 seconds to prevent computer from going idle/sleeping
+"""
 
-import pyautogui, time, os, sys
-print('lookingBusy is running! \nYour mouse will be moved every 25 seconds to ensure' \
-        ' your computer doesn\'t go idle.\n\nPress Ctrl+c to quit...')
+import pyautogui
+import os
+import sys
+import time
+
+print("looking_busy is running!")
+print("Your mouse will be moved every 25 seconds to ensure your computer does "
+    "not go idle.")
+print("Press Ctrl+c to quit...")
 time.sleep(3)
 
-distance  = 25
-changeVar = 0
+distance  = 0.25
+change_var = 0
 
 while True:
     try: 
-        if changeVar == 0:
-            pyautogui.move(100, 0, duration=0.25)   # move mouse 100px to the right
-            changeVar = 1
-            time.sleep(5)
+        if change_var == 0:
+            pyautogui.move(100, 0, duration=distance)   # move mouse 100px to the right
+            change_var = 1
+            time.sleep(25)
         else: 
-            pyautogui.move(-100, 0, duration=0.25)   # move mouse 100px to the left
-            changeVar = 0
-            time.sleep(5)
+            pyautogui.move(-100, 0, duration=distance)   # move mouse 100px to the left
+            change_var = 0
+            time.sleep(25)
             continue
     except KeyboardInterrupt: 
         print('\nCtrl+c registered! Exiting program.')
