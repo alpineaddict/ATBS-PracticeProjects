@@ -1,25 +1,28 @@
 #!/usr/bin/env python
 
-# PDF Encrypter
-# Encrypt PDF at specified path with specified password
+"""
+Encrypt PDF at specified location with specified password.
+"""
 
-import os, PyPDF2, time, pyinputplus as pyip
-# TODO: Figure out logic to only run Encrypt_PDF() if path & filename is valid
+import os
+import PyPDF2
+import time
+import pyinputplus as pyip
 
-def Get_Info():
+def getInfo():
     '''
     Get input from user for path, filename and password. Return values. 
     '''
 
     # Get input
-    print('Please fill out the following prompts, which will be the info used to encrypt'
-          'your PDF file.')
+    print('Please fill out the following prompts, which will be the info used '
+          'to encrypt your PDF file.')
     path     = pyip.inputStr     ('File path: ') 
     filename = pyip.inputStr     ('File name: ')
     password = pyip.inputPassword(' Password: ')
 
     # Validate path and filename
-    print('\nValidating file path and whether specified filename exists...')    
+    print('\nValidating file path and whether specified filename exists...')
     try: 
         os.chdir(path)
     except Exception as e1:
@@ -39,7 +42,8 @@ def Get_Info():
 
 def Encrypt_PDF(path, filename, password):
     '''
-    Accept PDF path, filename and password as parameters. Encrypt PDF with given password.
+    Accept PDF path, filename and password as parameters. Encrypt PDF with given
+    password.
     '''
 
     print('\n\nAttempting to encrypt PDF...')
@@ -47,19 +51,17 @@ def Encrypt_PDF(path, filename, password):
 
     # Attempt encryption:
     try:
-        pdfFile = open(filename, 'rb')
-        pdfReader = PyPDF2.PdfFileReader(pdfFile)
-        pdfWriter = PyPDF2.PdfFileWriter()
-        for pageNum in range(pdfReader.numPages):
-            pdfWriter.addPage(pdfReader.getPage(pageNum))
+        pdf_file = open(filename, 'rb')
+        pdf_reader = PyPDF2.pdf_fileReader(pdf_file)
+        pdf_writer = PyPDF2.pdf_fileWriter()
+        for page_num in range(pdf_reader.numPages):
+            pdf_writer.addPage(pdf_reader.getPage(page_num))
 
-
-        pdfWriter.encrypt(password)
-        newFileName = filename[:-4] + '_encrypted.pdf'
-        resultPdf = open(newFileName, 'wb')
-        pdfWriter.write(resultPdf)
-        resultPdf.close()
-        # print('PDF file successfully encrypted!')                                                 # Temp Removed. Relocated to else
+        pdf_writer.encrypt(password)
+        new_file_name = filename[:-4] + '_encrypted.pdf'
+        result_pdf = open(new_file_name, 'wb')
+        pdf_writer.write(result_pdf)
+        result_pdf.close()
     except Exception as e: 
         print('ERROR! PDF file was not encryped.\n Error: {}'.format(e))
     else: 
@@ -70,5 +72,5 @@ def Encrypt_PDF(path, filename, password):
 
 
 # Run program
-path, filename, password = Get_Info()
+path, filename, password = getInfo()
 Encrypt_PDF(path, filename, password)
