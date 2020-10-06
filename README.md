@@ -9,16 +9,16 @@
 ```$ sudo apt-get update```  
 ```$ sudo apt-get install python3.8```  
 
-3. Set up virtual environment (recommended, not required)
+2. Set up virtual environment (recommended, not required)
 *Version/path dependent on your Python installation*
 ```sudo apt-get install python3-pip```
 ```pip install virtualenv```
 ```python3 -m venv env```
 
-4. Activate virtual environment from working directory in repository
+3. Activate virtual environment from working directory in repository
 ```source env/bin/activate```
 
-5. Download requirements.txt file to your working repository, then install required packages via pip
+4. Download requirements.txt file to your working repository, then install required packages via pip
 ```pip install -r requirements.txt```
 
 ## Running a script
