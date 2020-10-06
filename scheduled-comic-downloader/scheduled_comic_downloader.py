@@ -3,7 +3,11 @@
 # ScheduledComicDownloader.py - Script program that checks a comic webpage and
 # downloads currently displayed image if image has not already been downloaded
 
-import requests, bs4, os, logging, time
+import requests
+import bs4
+import os
+import logging
+import time
 
 # Toggle logging: 
 # logging.basicConfig(level=logging.CRITICAL, format='%(asctime)s - %(levelname)s - %(message)s')

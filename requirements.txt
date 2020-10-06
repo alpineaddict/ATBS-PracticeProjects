@@ -1,0 +1,11 @@
+PyPDF2
+pyinputplus
+ezgmail
+emails
+openpyxl
+bs4
+PIL
+pyautogui
+pyperclip
+pathlib
+
