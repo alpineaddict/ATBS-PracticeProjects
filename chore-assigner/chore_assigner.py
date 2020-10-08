@@ -12,14 +12,12 @@ import emails
 
 FILEPATH = '/home/ross/AllThingsPython/ATBS/PracticeProjects/ChoreAssigner'
 
-# Welcome message
 print(
     'Welcome to chore assigner! \nChore assigner will assign a random choice'
     'from a list of predetermined choices to an email address in the'
     'available email list.'
 )
 
-# Create variables for list of emails, list of chores, subject line and email body
 emails  = emails.email_list
 chores  = ['dishes', 'walk_dog', 'cleaning', 'laundry']
 subject = 'Chore assignment'
@@ -32,7 +30,6 @@ print('\nChores:')
 for chore in chores:
     print('- ' + chore)
 
-# Log into gmail via ezgmail API
 print('\nAttempting to log into gmail API...')
 os.chdir(FILEPATH)
 try:
@@ -41,7 +38,6 @@ try:
 except Exception as e:
     print('ERROR! Unable to log into gmail API.\nError Message: {}'.format(e))
 
-# Assign chore to an email address, send email, update lists appropriately
 try: 
     print('\nDelegating tasks...')
     # print('\n\nemail list TEST')

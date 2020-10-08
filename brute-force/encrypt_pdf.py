@@ -9,19 +9,17 @@ import PyPDF2
 import time
 import pyinputplus as pyip
 
-def getInfo():
+def get_info():
     '''
     Get input from user for path, filename and password. Return values. 
     '''
 
-    # Get input
     print('Please fill out the following prompts, which will be the info used '
           'to encrypt your PDF file.')
     path     = pyip.inputStr     ('File path: ') 
     filename = pyip.inputStr     ('File name: ')
     password = pyip.inputPassword(' Password: ')
 
-    # Validate path and filename
     print('\nValidating file path and whether specified filename exists...')
     try: 
         os.chdir(path)
@@ -35,12 +33,11 @@ def getInfo():
         print('Error: {}'.format(e2))
     else: 
         print('Success! Path and filename OK.')
-        # return(True)                                # program logic
 
     return(path, filename, password)
 
 
-def Encrypt_PDF(path, filename, password):
+def encrypt_pdf(path, filename, password):
     '''
     Accept PDF path, filename and password as parameters. Encrypt PDF with given
     password.
@@ -72,5 +69,5 @@ def Encrypt_PDF(path, filename, password):
 
 
 # Run program
-path, filename, password = getInfo()
-Encrypt_PDF(path, filename, password)
+path, filename, password = get_info()
+encrypt_pdf(path, filename, password)

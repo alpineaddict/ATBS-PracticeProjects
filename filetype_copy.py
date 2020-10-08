@@ -9,7 +9,7 @@ they are in to a new folder.
 import shutil, os
 from pathlib import Path
 
-def fileTypeCopy(source_path, target_path, file_extension):
+def file_type_copy(source_path, target_path, file_extension):
     '''
     Accept absolute file path, target path and file extension as parameter. 
     Perform a tree walk at the absolute path and copy files of specified type to target destination.
@@ -67,4 +67,4 @@ if __name__ == '__main__'"
     TARGET_DIR = '/home/ross/Dump2/'
     FILETYPE   = 'pdf'
 
-    fileTypeCopy(FILEPATH, TARGET_DIR, FILETYPE)
+    file_type_copy(FILEPATH, TARGET_DIR, FILETYPE)

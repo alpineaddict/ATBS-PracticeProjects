@@ -12,7 +12,7 @@ import shutil
 
 PATH = '/home/ross/AllThingsPython/MyDev/atbs-scripts/excel-to-csv/excel_files/'
 
-def xlsxToCsv(target_directory):
+def xlsc_to_csv(target_directory):
     os.chdir(target_directory)
     os.makedirs('Converted_Files', exist_ok=True)
     target_directory = 'Converted_Files/'
@@ -58,6 +58,5 @@ def xlsxToCsv(target_directory):
     except Exception as e:
         print('ERROR!\nError message: {}'.format(e))
 
-
 if __name__ == '__main__':
-    xlsxToCsv(PATH)
+    xlsc_to_csv(PATH)

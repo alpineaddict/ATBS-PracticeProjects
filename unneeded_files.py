@@ -10,7 +10,7 @@ from pathlib import Path
 
 FILEPATH = '/home/ross/Desktop/TestDirectory'
 
-def UnneededFiles(directory, file_size):
+def unneeded_files(directory, file_size):
     '''
     Accept directory path and file size as parameters.
     Perform tree walk starting at specified directory looking for files larger
@@ -45,7 +45,7 @@ def UnneededFiles(directory, file_size):
 
         break
 
-UnneededFiles(FILEPATH, 99)
+unneeded_files(FILEPATH, 99)
 
 # file size: 104000000 or 100M
 # 99 converted:  103809024

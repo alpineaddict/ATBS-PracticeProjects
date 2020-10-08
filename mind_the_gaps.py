@@ -12,7 +12,7 @@ from pathlib import Path
 
 FILEPATH = '/home/ross/AllThingsPython/ATBS'
 
-def mindTheGaps(path):
+def mind_the_gaps(path):
     '''
     Accept path as parameter. Within the path specified, iterate through the 
     files and check suffixes to see if there are any missing gaps in the 
@@ -36,4 +36,4 @@ def mindTheGaps(path):
         break
 
 if __name__ == '__main__':
-    mindTheGaps(FILEPATH, 0)
+    mind_the_gaps(FILEPATH, 0)

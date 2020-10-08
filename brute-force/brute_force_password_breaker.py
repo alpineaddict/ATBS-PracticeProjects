@@ -17,7 +17,7 @@ DICTIONARY_FILE = (
     '/home/ross/AllThingsPython/ATBS/automate_online-materials/dictionary.txt'
 )
 
-def getInfo():
+def get_info():
     '''
     Get input from user for path, filename and password. Return values. 
     '''
@@ -43,7 +43,7 @@ def getInfo():
     return(path, filename)
 
 
-def buildWordDatabase(dictionary_item):
+def build_word_database(dictionary_item):
     '''
     Accept dictionary item as parameter and return object that contains all
     words in English language as individual strings within list. 
@@ -64,7 +64,7 @@ def buildWordDatabase(dictionary_item):
     return(word_list_2)
 
 
-def decryptPdf(path, filename, dictionary_words):
+def decrypt_pdf(path, filename, dictionary_words):
     '''
     Accept path to PDF and words database file as parameters.
     Iterate through word database and attempt to decrypt PDF file with each word. 
@@ -102,6 +102,6 @@ def decryptPdf(path, filename, dictionary_words):
 
 if __name__ == '__main__':
     
-    dictionary_words = buildWordDatabase(DICTIONARY_FILE)
-    path, filename = getInfo()
-    decryptPdf(path, filename, dictionary_words)
+    dictionary_words = build_word_database(DICTIONARY_FILE)
+    path, filename = get_info()
+    decrypt_pdf(path, filename, dictionary_words)

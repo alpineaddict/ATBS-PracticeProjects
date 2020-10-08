@@ -8,7 +8,7 @@ and returns output to clipboard
 import time
 import pyperclip
 
-def trackTime():
+def track_time():
     print('Press ENTER to begin. Afterwards, press ENTER to start stopwatch.')
     print('Press Ctrl-C to quit.')
     input()                             # press Enter to begin
@@ -40,5 +40,5 @@ def trackTime():
 
 
 if __name__ == '__main__':
-    output = '\n'.join(trackTime())
+    output = '\n'.join(track_time())
     pyperclip.copy(output)

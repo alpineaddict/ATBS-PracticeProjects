@@ -9,21 +9,18 @@ import os
 import PyPDF2
 import EncryptPDF
 
-def pdfEncrypt(filename, password):
+def pdf_encrypt(filename, password):
     '''
     Accept filename parameter and create new PDF file as encrypted version 
     of given file.
     '''
-
     print('Attempting to encrypt PDF file: {}'.format(filename))
-
     try:
         pdf_file = open(filename, 'rb')
         pdf_reader = PyPDF2.pdf_fileReader(pdf_file)
         pdf_writer = PyPDF2.pdf_fileWriter()
         for page_num in range(pdf_reader.numPages):
             pdf_writer.addPage(pdf_reader.getPage(page_num))
-
 
         pdf_writer.encrypt(password)
         newFileName = filename[:-4] + '_encrypted.pdf'
@@ -34,14 +31,11 @@ def pdfEncrypt(filename, password):
     except Exception as e: 
         print('ERROR! PDF file was not encrypted.\n Error: {}'.format(e))
 
-
-def pdfDecrypt(filename, password):
+def pdf_decrypt(filename, password):
     '''
     Accept filename and password as parameters to decrypt PDF file. 
     '''
-
     print('Attempting to decrypt PDF file: {}'.format(filename))
-
     try: 
         pdf_file = open(filename, 'rb')
         pdf_reader = PyPDF2.pdf_fileReader(pdf_file)
@@ -59,13 +53,11 @@ def pdfDecrypt(filename, password):
     except Exception as e: 
         print('ERROR! PDF file was not decrypted.\n Error: {}'.format(e))
 
-
-def osWalkEncrypt(password):
+def os_walk_encrypt(password):
     '''
     From the current working dir, perform a tree walk & encrypt all 
     encountered PDF files with password parameter.
     '''
-
     print('\n\nScanning folders and sub-folders for PDF files...')
     for folder_name, sub_folders, filenames in os.walk(os.getcwd()):
         # print('The current folder is ' + folder_name)
@@ -73,17 +65,14 @@ def osWalkEncrypt(password):
             if filename.endswith('.pdf') and 'encrypt' not in filename:
                 print('PDF found!\nFilename: {}'.format(filename))
                 filepath = folder_name + '/' + filename
-                pdfEncrypt(filepath,password)
+                pdf_encrypt(filepath,password)
                 print('')
                 
-
-def osWalkDecrypt(password):
+def os_walk_decrypt(password):
     '''
     From the current working dir, perform a tree walk & decrypt all
     encountered PDF files with password parameter.
     '''
-
-
     print('\n\nScanning folders and sub-folders for PDF files...')
     for folder_name, sub_folders, filenames in os.walk(os.getcwd()):
         # print('The current folder is ' + folder_name)
@@ -91,16 +80,15 @@ def osWalkDecrypt(password):
             if filename.endswith('.pdf') and 'encrypt' in filename:
                 print('PDF found!\nFilename: {}'.format(filename))
                 filepath = folder_name + '/' + filename
-                pdfDecrypt(filepath,password)
+                pdf_decrypt(filepath,password)
                 print('')
-
 
 # Ecrypt PDFs: 
 # dir_name = '/home/ross/AllThingsPython/ATBS/PracticeProjects/PDFparanoia/'
 # os.chdir(dir_name)
 # print(f'Encrypting all PDF files in the following directory:\n{dir_name}')
 # password = input('\nPlease enter a password to encrypt PDF files with: ')
-# osWalkEncrypt(password)
+# os_walk_encrypt(password)
 
 
 # Decrypt encrypted PDFs: 
@@ -108,4 +96,4 @@ def osWalkDecrypt(password):
 # os.chdir(dir_name)
 # print(f'Decrypting all PDF files in the following directory:\n{dir_name}'
 # password = input('\nPlease enter password for encrypted PDF files: ')
-# osWalkDecrypt(password)
+# os_walk_decrypt(password)
